@@ -52,7 +52,7 @@ sub parseform
 sub insertfriend
   {
     #Form SQL insert statement
-    $insert = qq~insert jcsaccounts(lname, passkey, fname, phone, email) values('$form{lname}','$form{passkey}','$form{fname}','$form{phone}','$form{email}')~;
+    $insert = qq~insert jcsaccounts(lname, passkey, firstname, lastname, streetaddress, city, postalcode , phone, email) values('$form{lname}','$form{passkey}','$form{fname}','$form{phone}','$form{email}')~;
     $dbh=DBI->connect($connectionInfo,$user,$passwd);
 
   #Prepare MySQL statement and create Statement Handler $sth
@@ -135,9 +135,13 @@ sub displaysuccess
               <form action="justchristmasstuff.cgi" method="POST">
               <h2>Registration</h2>
               <p>Login Name: <input type="text" name="lname" value="$form{lname}">$errors{lname}</p>
-              <p>Password: <input type="text" name="passkey" value="$form{passkey}">$errors{passkey}<p>
-              <p>Full Name: <input type="text" name="fname" value="$form{fname}">$errors{fname}<p>
-              <p>Phone Number: <input type="text" name="phone" value="$form{phone}">$errors{phone}</p>
+              <p>Password: <input type="password" name="passkey" value="$form{passkey}">$errors{passkey}</p>
+	      <p>First Name:<input type="text name="firstname" value="$form{firstname}"</p>
+	      <p>Last Name:<input type="text name="lastname" value="$form{lastname}"</p>
+              <p>Street Address:<input type="text name="streetaddress" value="$form{saddress}"</p>
+	      <p>City:<input type="text name="city" value="$form{city}"</p>
+	      <p>Postal Code:<input type="text name="postalcode" value="$form{Pcode}"</p>
+	      <p>Phone Number: <input type="text" name="phone" value="$form{phone}">$errors{phone}</p>
               <p>E-mail: <input type="text" name="email" value="$form{email}">$errors{email}</p>
               <input type="submit" value="Insert" name="Insert"/>
               <input type="reset" value="Reset" name="reset"/>
